@@ -1,0 +1,1818 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE RENDER_MONKEY [
+   <!ELEMENT RENDER_MONKEY
+   (
+      RmEffectWorkspace |
+      RmRegistryBranch |
+      RmClipboardNode
+   )?>
+
+   <!ELEMENT RmEffectWorkspace 
+   (
+      RmRegistryBranch?,
+      RmPlugInData?,
+      RmStringVariable*,
+      (
+         ( RmDirectXEffect, RmOpenGLEffect?, RmOpenGLESEffect? ) |
+         ( RmOpenGLEffect, RmDirectXEffect?, RmOpenGLESEffect? ) |
+         ( RmOpenGLESEffect, RmDirectXEffect?, RmOpenGLEffect? )
+      )?,
+      (
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRenderableTexture |
+         RmStreamMap |
+         RmModelData |
+         RmEffectGroup
+      )*
+   )>
+
+   <!ELEMENT RmEffectGroup
+   ( 
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmDirectXEffect |
+         RmOpenGLEffect |
+         RmOpenGLESEffect |
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRenderableTexture |
+         RmStreamMap |
+         RmModelData
+      )*
+   )>
+
+   <!ELEMENT RmDirectXEffect
+   ( 
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmCamera |
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRenderableTexture |
+         RmStreamMap |
+         RmModelData |
+         RmPass
+      )*
+   )>
+
+   <!ELEMENT RmOpenGLEffect
+   (
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmCamera |
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRenderableTexture |
+         RmStreamMap |
+         RmModelData |
+         RmGLPass
+      )*
+   )>
+   
+   <!ELEMENT RmOpenGLESEffect
+   (
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmCamera |
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRenderableTexture |
+         RmStreamMap |
+         RmModelData |
+         RmGLESPass
+      )*
+   )>
+
+   <!ELEMENT RmPass
+   ( 
+      RmPlugInData?,
+      RmStringVariable*,
+      RmCameraReference?,
+      RmModelReference?,
+      RmRenderStateBlock?,
+      (
+         (
+         ( RmHLSLShader | RmShader ),
+         ( RmShader | RmHLSLShader )?
+         )
+      )?,
+      RmRenderTarget*,
+      RmTessellationNode?,
+      RmStreamMapReference?,
+      (
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmTextureObject |
+         RmLightObject |
+         RmMaterialObject
+         )*
+      )>
+                                                                     
+   <!ELEMENT RmGLPass
+   ( 
+      RmPlugInData?,
+      RmStringVariable*,
+      RmCameraReference?,
+      RmModelReference?,
+      RmRenderStateBlock?,
+      (
+         ( RmGLShader, RmGLShader? ) 
+      )?,
+      RmRenderTarget?,
+      RmStreamMapReference?,
+      (
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmTextureObject |
+         RmLightObject |
+         RmMaterialObject |
+         RmShaderConstant |
+         RmSampler
+         )*
+      )>
+
+   <!ELEMENT RmGLESPass
+   ( 
+      RmPlugInData?,
+      RmStringVariable*,
+      RmCameraReference?,
+      RmModelReference?,
+      RmRenderStateBlock?,
+      (
+         ( RmGLESShader, RmGLESShader? ) 
+      )?,
+      RmRenderTarget?,
+      RmStreamMapReference?,
+      (
+         RmBooleanVariable |
+         RmIntegerVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmColorVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmTextureObject |
+         RmLightObject |
+         RmMaterialObject |
+         RmShaderConstant |
+         RmSampler
+         )*
+      )>      
+      
+   <!ELEMENT RmShader
+   ( 
+      RmShaderCode,
+      RmPlugInData?,
+      (
+      RmStringVariable |
+      RmShaderConstant
+      )*
+   )>
+
+   <!ELEMENT RmHLSLShader
+   ( 
+      RmShaderCode,
+      RmPlugInData?,
+      (
+      RmStringVariable |
+      RmShaderConstant |
+      RmSampler
+      )*
+   )>
+
+   <!ELEMENT RmGLShader
+   ( 
+      RmShaderCode,
+      RmPlugInData?,
+      (
+      RmStringVariable
+      )*
+   )>
+
+   <!ELEMENT RmGLESShader
+   ( 
+      RmShaderCode,
+      RmPlugInData?,
+      (
+      RmStringVariable
+      )*
+   )>
+   
+   <!ELEMENT RmTextureObject
+   (
+      RmPlugInData?,
+      RmStringVariable*,
+      RmTextureReference?,
+      RmState*
+   )>
+
+   <!ELEMENT RmLightObject
+   (
+      RmPlugInData?,
+      RmStringVariable*,
+      RmLightReference?
+   )>
+   
+   <!ELEMENT RmMaterialObject
+   (
+      RmPlugInData?,
+      RmStringVariable*,
+      RmMaterialReference?
+   )>
+   
+   <!ELEMENT RmRenderStateBlock
+   (
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmState 
+      )*
+   )>
+
+   <!ELEMENT RmTessellationNode
+   (
+      RmPlugInData?,
+      RmStringVariable*
+   )>
+   
+   <!ELEMENT RmStreamMap
+   (
+      RmPlugInData?,
+      (
+         RmStringVariable |
+         RmStream 
+      )*
+   )>
+
+   <!ELEMENT RmStream               ( RmPlugInData?, RmStreamChannel* )>
+
+   <!ELEMENT RmModelData            ( RmPlugInData?, RmStringVariable* )>  
+   <!ELEMENT RmTextureReference     ( RmPlugInData?, RmStringVariable* )>
+   <!ELEMENT RmLightReference       ( RmPlugInData?, RmStringVariable* )>
+   <!ELEMENT RmMaterialReference    ( RmPlugInData?, RmStringVariable* )>
+   <!ELEMENT RmCameraReference      ( RmPlugInData?, RmStringVariable* )>
+   <!ELEMENT RmModelReference       ( RmPlugInData?, RmStringVariable* )>
+   <!ELEMENT RmStreamMapReference   ( RmPlugInData?, RmStringVariable* )>   
+   <!ELEMENT RmRenderableTexture    ( RmPlugInData?, RmStringVariable* )>   
+   <!ELEMENT RmRenderTarget         ( RmPlugInData?, RmStringVariable* )>   
+   <!ELEMENT RmBooleanVariable      ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmFloatVariable        ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmVectorVariable       ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmMatrixVariable       ( RmPlugInData?, RmStringVariable? )>   
+   <!ELEMENT RmColorVariable        ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmIntegerVariable      ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT Rm2DTextureVariable    ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmCubemapVariable      ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT Rm3DTextureVariable    ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmLightVariable        ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmMaterialVariable     ( RmPlugInData?, RmStringVariable? )>
+   <!ELEMENT RmCamera               ( RmPlugInData?, RmStringVariable* )>
+
+   <!ELEMENT RmStringVariable       ( RmTextDataBlock, RmPlugInData? )>
+   
+   <!ELEMENT RmDynamicVariable
+   (
+      RmDynamicVariableValueContainer,
+      RmPlugInData?,
+      RmStringVariable?
+   )>
+   
+   <!ELEMENT RmDynamicVariableValueContainer
+   (
+      RmPlugInData?,
+      RmDynamicVariableValue*
+   )>
+   
+   <!ELEMENT RmTextDataBlock        ( #PCDATA ) >
+   
+   <!ELEMENT RmRegistryBranch
+   ( 
+      RmTextDataBlock?,
+      (
+         RmRegistryBranch |
+         RmStringVariable |
+         RmIntegerVariable |
+         RmBooleanVariable |
+         RmFloatVariable
+      )*      
+   )>
+
+   <!ELEMENT RmPlugInData
+   ( 
+      RmTextDataBlock?,
+      (
+         RmStringVariable |
+         RmIntegerVariable |
+         RmBooleanVariable |
+         RmFloatVariable |
+         RmVectorVariable
+      )*      
+   )>
+   
+   <!ELEMENT RmClipboardNode
+   (
+      RmTextDataBlock?,
+      (
+         RmEffectWorkspace |
+         RmEffectGroup |
+         RmDirectXEffect |
+         RmOpenGLEffect |
+         RmOpenGLESEffect |
+         RmPass |
+         RmGLPass |
+         RmGLESPass |
+         RmShader |
+         RmHLSLShader |
+         RmGLShader |
+         RmGLESShader |
+         RmShaderConstant |
+         RmSampler |
+         RmTextureObject |
+         RmLightObject |
+         RmMaterialObject |
+         RmRenderStateBlock |
+         RmState |
+         RmStreamMap |
+         RmStream |
+         RmStreamChannel |
+         RmModelData |
+         RmTextureReference |
+         RmLightReference |
+         RmMaterialReference |
+         RmModelReference |
+         RmStreamMapReference |
+         RmRenderableTexture |
+         RmRenderTarget |
+         RmBooleanVariable |
+         RmFloatVariable |
+         RmVectorVariable |
+         RmMatrixVariable |
+         RmDynamicVariable |
+         RmDynamicVariableValue |
+         RmColorVariable |
+         RmIntegerVariable |
+         RmStringVariable |
+         Rm2DTextureVariable |
+         RmCubemapVariable |
+         Rm3DTextureVariable |
+         RmLightVariable |
+         RmMaterialVariable |
+         RmRegistryBranch |
+         RmPlugInData |
+         RmCamera |
+         RmCameraReference
+      )*      
+   )>
+   
+   <!ELEMENT RmStreamChannel        ( RmPlugInData? ) >
+   <!ELEMENT RmShaderConstant       ( RmPlugInData? ) >
+   <!ELEMENT RmSampler              ( RmPlugInData? ) >
+   <!ELEMENT RmState                ( RmPlugInData? ) >
+   <!ELEMENT RmDynamicVariableValue ( RmPlugInData? ) >
+   
+   <!ELEMENT RmShaderCode           ( #PCDATA ) >
+
+   <!ATTLIST RmEffectWorkspace 
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ACTIVE_EFFECT                 CDATA #REQUIRED
+      VALIDATION_STRING             CDATA #REQUIRED
+      XML_VERSION                   CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmEffectGroup           
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmDirectXEffect                
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ACTIVE_CAMERA                 CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmOpenGLEffect                
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ACTIVE_CAMERA                 CDATA #REQUIRED
+   >                                 
+   
+   <!ATTLIST RmOpenGLESEffect                
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ACTIVE_CAMERA                 CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmPass                  
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PASS_INDEX                    CDATA #REQUIRED
+      ENABLED                       ( TRUE | FALSE ) #REQUIRED
+   >                                 
+
+   <!ATTLIST RmGLPass                  
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PASS_INDEX                    CDATA #REQUIRED
+      ENABLED                       ( TRUE | FALSE ) #REQUIRED
+   >                                 
+   
+   <!ATTLIST RmGLESPass                  
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PASS_INDEX                    CDATA #REQUIRED
+      ENABLED                       ( TRUE | FALSE ) #REQUIRED
+   >                                 
+   
+   <!ATTLIST RmShader        
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PIXEL_SHADER                  CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmHLSLShader        
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PIXEL_SHADER                  ( TRUE | FALSE ) #REQUIRED
+      TARGET                        CDATA #REQUIRED
+      ENTRY_POINT                   CDATA #REQUIRED
+      COMPILER_FLAGS                CDATA #REQUIRED
+   >  
+
+   <!ATTLIST RmGLShader        
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PIXEL_SHADER                  ( TRUE | FALSE ) #REQUIRED
+   >  
+   
+   <!ATTLIST RmGLESShader        
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PIXEL_SHADER                  ( TRUE | FALSE ) #REQUIRED
+   >  
+
+   <!ATTLIST RmShaderConstant
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      REGISTER                      CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmSampler               
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      REGISTER                      CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmTextureObject
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      STATE_INDEX                   CDATA #REQUIRED
+      VERTEX_TEXTURE                ( TRUE | FALSE ) #REQUIRED
+   >
+
+   <!ATTLIST RmLightObject
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      INDEX                         CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmMaterialObject
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      INDEX                         CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmRenderStateBlock
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmState                 
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      STATE                         CDATA #REQUIRED
+      VALUE                         CDATA #REQUIRED
+      USAGE                         CDATA #REQUIRED
+   >                               
+
+   <!ATTLIST RmStreamMap           
+     NAME                           CDATA #REQUIRED
+     API                            CDATA #REQUIRED
+   >                               
+
+   <!ATTLIST RmStream              
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      STRIDE                        CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmStreamChannel
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      DATA_SIZE                     CDATA #REQUIRED
+      DATA_TYPE                     CDATA #REQUIRED
+      REGISTER                      CDATA #REQUIRED
+      USAGE                         CDATA #REQUIRED
+      USAGE_INDEX                   CDATA #REQUIRED
+      ATTRIBUTE_NAME                CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmModelData
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      FILE_NAME                     CDATA #REQUIRED
+      ORIENTATION                   CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmTextureReference
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmLightReference
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmMaterialReference
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmModelReference
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmStreamMapReference
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmRenderableTexture
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      FILE_NAME                     CDATA #REQUIRED
+      ORIGIN                        CDATA #REQUIRED
+      WIDTH                         CDATA #REQUIRED
+      HEIGHT                        CDATA #REQUIRED
+      FORMAT                        CDATA #REQUIRED
+      USE_VIEWPORT_DIMENSIONS       ( TRUE | FALSE ) #REQUIRED
+      GENERATE_MIPMAPS              ( TRUE | FALSE ) #REQUIRED
+      WIDTH_RATIO                   CDATA #REQUIRED
+      HEIGHT_RATIO                  CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmRenderTarget
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      INDEX                         CDATA #REQUIRED
+      RENDER_TO_SCREEN              ( TRUE | FALSE ) #REQUIRED
+      COLOR_CLEAR                   ( TRUE | FALSE ) #REQUIRED
+      DEPTH_CLEAR                   ( TRUE | FALSE ) #REQUIRED
+      CLEAR_COLOR_VALUE             CDATA #REQUIRED
+      DEPTH_CLEAR_VALUE             CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmBooleanVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE                         CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmFloatVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE                         CDATA #REQUIRED
+      MIN                           CDATA #REQUIRED
+      MAX                           CDATA #REQUIRED
+      CLAMP                         ( TRUE | FALSE ) #REQUIRED
+   >
+
+   <!ATTLIST RmVectorVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE_0                       CDATA #REQUIRED
+      VALUE_1                       CDATA #REQUIRED
+      VALUE_2                       CDATA #REQUIRED
+      VALUE_3                       CDATA #REQUIRED
+      MIN                           CDATA #REQUIRED
+      MAX                           CDATA #REQUIRED
+      CLAMP                         ( TRUE | FALSE ) #REQUIRED
+      NORMALIZE                     ( TRUE | FALSE ) #REQUIRED
+   >
+
+   <!ATTLIST RmMatrixVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE_0                       CDATA #REQUIRED
+      VALUE_1                       CDATA #REQUIRED
+      VALUE_2                       CDATA #REQUIRED
+      VALUE_3                       CDATA #REQUIRED
+      VALUE_4                       CDATA #REQUIRED
+      VALUE_5                       CDATA #REQUIRED
+      VALUE_6                       CDATA #REQUIRED
+      VALUE_7                       CDATA #REQUIRED
+      VALUE_8                       CDATA #REQUIRED
+      VALUE_9                       CDATA #REQUIRED
+      VALUE_10                      CDATA #REQUIRED
+      VALUE_11                      CDATA #REQUIRED
+      VALUE_12                      CDATA #REQUIRED
+      VALUE_13                      CDATA #REQUIRED
+      VALUE_14                      CDATA #REQUIRED
+      VALUE_15                      CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmDynamicVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VARIABLE_TYPE                 ( FLOAT | INTEGER | BOOLEAN ) #REQUIRED
+      ROWS                          CDATA #REQUIRED
+      COLUMNS                       CDATA #REQUIRED
+      FIXED_SIZE                    ( TRUE | FALSE ) #REQUIRED
+      MIN                           CDATA #REQUIRED
+      MAX                           CDATA #REQUIRED
+      CLAMP                         ( TRUE | FALSE ) #REQUIRED
+      NORMALIZE                     ( TRUE | FALSE ) #REQUIRED
+   >
+   
+   <!ATTLIST RmDynamicVariableValue
+      ROW_INDEX                     CDATA #REQUIRED
+      COLUMN_INDEX                  CDATA #REQUIRED
+      VALUE                         CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmColorVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE_0                       CDATA #REQUIRED
+      VALUE_1                       CDATA #REQUIRED
+      VALUE_2                       CDATA #REQUIRED
+      VALUE_3                       CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmIntegerVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      VALUE                         CDATA #REQUIRED
+      MIN                           CDATA #REQUIRED
+      MAX                           CDATA #REQUIRED
+      CLAMP                         ( TRUE | FALSE ) #REQUIRED
+   >
+   
+   <!ATTLIST RmStringVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+   >
+
+   <!ATTLIST Rm2DTextureVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      FILE_NAME                     CDATA #REQUIRED
+      ORIGIN                        CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmCubemapVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      FILE_NAME                     CDATA #REQUIRED
+      ORIGIN                        CDATA #REQUIRED
+   >
+
+   <!ATTLIST Rm3DTextureVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      FILE_NAME                     CDATA #REQUIRED
+      ORIGIN                        CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmLightVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      LIGHT_ENABLED                 ( TRUE | FALSE ) #REQUIRED
+      LIGHT_TYPE                    ( POSITIONAL | DIRECTIONAL | SPOTLIGHT ) #REQUIRED
+      AMBIENT_0                     CDATA #REQUIRED
+      AMBIENT_1                     CDATA #REQUIRED
+      AMBIENT_2                     CDATA #REQUIRED
+      AMBIENT_3                     CDATA #REQUIRED
+      DIFFUSE_0                     CDATA #REQUIRED
+      DIFFUSE_1                     CDATA #REQUIRED
+      DIFFUSE_2                     CDATA #REQUIRED
+      DIFFUSE_3                     CDATA #REQUIRED
+      SPECULAR_0                    CDATA #REQUIRED
+      SPECULAR_1                    CDATA #REQUIRED
+      SPECULAR_2                    CDATA #REQUIRED
+      SPECULAR_3                    CDATA #REQUIRED
+      POSITION_0                    CDATA #REQUIRED
+      POSITION_1                    CDATA #REQUIRED
+      POSITION_2                    CDATA #REQUIRED
+      DIRECTION_0                   CDATA #REQUIRED
+      DIRECTION_1                   CDATA #REQUIRED
+      DIRECTION_2                   CDATA #REQUIRED
+      ATTENUATION_0                 CDATA #REQUIRED
+      ATTENUATION_1                 CDATA #REQUIRED
+      ATTENUATION_2                 CDATA #REQUIRED
+      SPOTLIGHT_THETA               CDATA #REQUIRED
+      SPOTLIGHT_PHI                 CDATA #REQUIRED
+      RANGE                         CDATA #REQUIRED
+      FALLOFF                       CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmMaterialVariable
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      ARTIST_EDITABLE               ( TRUE | FALSE ) #REQUIRED
+      VARIABLE_SEMANTIC             CDATA #REQUIRED
+      AMBIENT_0                     CDATA #REQUIRED
+      AMBIENT_1                     CDATA #REQUIRED
+      AMBIENT_2                     CDATA #REQUIRED
+      AMBIENT_3                     CDATA #REQUIRED
+      DIFFUSE_0                     CDATA #REQUIRED
+      DIFFUSE_1                     CDATA #REQUIRED
+      DIFFUSE_2                     CDATA #REQUIRED
+      DIFFUSE_3                     CDATA #REQUIRED
+      SPECULAR_0                    CDATA #REQUIRED
+      SPECULAR_1                    CDATA #REQUIRED
+      SPECULAR_2                    CDATA #REQUIRED
+      SPECULAR_3                    CDATA #REQUIRED
+      EMISSIVE_0                    CDATA #REQUIRED
+      EMISSIVE_1                    CDATA #REQUIRED
+      EMISSIVE_2                    CDATA #REQUIRED
+      EMISSIVE_3                    CDATA #REQUIRED
+      SPECULAR_POWER                CDATA #REQUIRED
+   >
+      
+   <!ATTLIST RmRegistryBranch
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      XML_VERSION                   CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmPlugInData
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      PLUGIN_GUID                   CDATA #REQUIRED
+   >
+
+   <!ATTLIST RmClipboardNode
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      XML_VERSION                   CDATA #REQUIRED
+   >
+   
+   <!ATTLIST RmCamera                
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      CAMERA_POSITION_X             CDATA #REQUIRED
+      CAMERA_POSITION_Y             CDATA #REQUIRED
+      CAMERA_POSITION_Z             CDATA #REQUIRED
+      LOOK_AT_VECTOR_X              CDATA #REQUIRED
+      LOOK_AT_VECTOR_Y              CDATA #REQUIRED
+      LOOK_AT_VECTOR_Z              CDATA #REQUIRED
+      UP_VECTOR_X                   CDATA #REQUIRED
+      UP_VECTOR_Y                   CDATA #REQUIRED
+      UP_VECTOR_Z                   CDATA #REQUIRED
+      FOV                           CDATA #REQUIRED
+      NEAR_CLIP_PLANE               CDATA #REQUIRED
+      FAR_CLIP_PLANE                CDATA #REQUIRED
+   >                                 
+
+   <!ATTLIST RmCameraReference                
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      USE_ACTIVE_CAMERA             ( TRUE | FALSE ) #REQUIRED
+   >                               
+   
+   <!ATTLIST RmShaderCode                
+      TYPE                          ( TEXT ) #REQUIRED
+   >                               
+   
+   <!ATTLIST RmTextDataBlock                
+      TYPE                          ( TEXT ) #REQUIRED
+   >                               
+   
+   <!ATTLIST RmTessellationNode
+      NAME                          CDATA #REQUIRED
+      API                           CDATA #REQUIRED
+      MIN_TESSELLATION_LEVEL        CDATA #REQUIRED
+      MAX_TESSELLATION_LEVEL        CDATA #REQUIRED
+   >
+]>
+<RENDER_MONKEY>
+ <RmEffectWorkspace NAME="Effect Workspace" API="" ACTIVE_EFFECT="Effect Workspace.Effect Group 1.Burning Paper" VALIDATION_STRING="" XML_VERSION="RenderMonkey 1.71">
+  <RmRegistryBranch NAME="RM_REGISTRY" API="" XML_VERSION="RenderMonkey 1.71">
+   <RmRegistryBranch NAME="RM_LOCAL" API="" XML_VERSION="RenderMonkey 1.71">
+    <RmRegistryBranch NAME="RM_PLUGIN" API="" XML_VERSION="RenderMonkey 1.71"><RmTextDataBlock TYPE="TEXT"><![CDATA[
+<DockingPaneLayouts><Application_Layout><Pane-1><Type>5</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><Direction>3</Direction><Panes>0</Panes></Pane-1><Pane-2><Type>2</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><Horiz>1</Horiz><Pane-1>3</Pane-1><Pane-2>4</Pane-2><Pane-3>5</Pane-3><Pane-4>6</Pane-4><Pane-5>7</Pane-5><Pane-6>8</Pane-6><Pane-7>9</Pane-7><Pane-8>10</Pane-8><Pane-9>11</Pane-9><Pane-10>12</Pane-10><Pane-11>13</Pane-11><Pane-12>14</Pane-12><Pane-13>15</Pane-13><Pane-14>16</Pane-14><Pane-15>17</Pane-15><Pane-16>18</Pane-16><Pane-17>19</Pane-17><Pane-18>20</Pane-18><Pane-19>21</Pane-19><Pane-20>22</Pane-20><Panes>20</Panes></Pane-2><Pane-3><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-3><Pane-4><Type>1</Type><DockingCX>339</DockingCX><DockingCY>178</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-4><Pane-5><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-5><Pane-6><Type>1</Type><DockingCX>374</DockingCX><DockingCY>275</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-6><Pane-7><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-7><Pane-8><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-8><Pane-9><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-9><Pane-10><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-10><Pane-11><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-11><Pane-12><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-12><Pane-13><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-13><Pane-14><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-14><Pane-15><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-15><Pane-16><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-16><Pane-17><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-17><Pane-18><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-18><Pane-19><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-19><Pane-20><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-20><Pane-21><Type>1</Type><DockingCX>366</DockingCX><DockingCY>271</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-21><Pane-22><Type>2</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><Horiz>0</Horiz><Pane-1>23</Pane-1><Panes>1</Panes></Pane-22><Pane-23><Type>2</Type><DockingCX>0</DockingCX><DockingCY>742</DockingCY><Horiz>1</Horiz><Pane-1>24</Pane-1><Panes>1</Panes></Pane-23><Pane-24><Type>2</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><Horiz>0</Horiz><Pane-1>25</Pane-1><Pane-2>37</Pane-2><Panes>2</Panes></Pane-24><Pane-25><Type>2</Type><DockingCX>0</DockingCX><DockingCY>678</DockingCY><Horiz>1</Horiz><Pane-1>26</Pane-1><Pane-2>36</Pane-2><Panes>2</Panes></Pane-25><Pane-26><Type>2</Type><DockingCX>1533</DockingCX><DockingCY>0</DockingCY><Horiz>0</Horiz><Pane-1>27</Pane-1><Panes>1</Panes></Pane-26><Pane-27><Type>2</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><Horiz>1</Horiz><Pane-1>28</Pane-1><Pane-2>31</Pane-2><Pane-3>33</Pane-3><Pane-4>35</Pane-4><Panes>4</Panes></Pane-27><Pane-28><Type>2</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Horiz>1</Horiz><Pane-1>29</Pane-1><Panes>1</Panes></Pane-28><Pane-29><Type>1</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Selected>30</Selected><Panes>1</Panes><Pane-1>30</Pane-1></Pane-29><Pane-30><Type>0</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Title>Workspace</Title><ID>1000</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>29</DockingHolder><FloatingHolder>59</FloatingHolder><LastHolder>29</LastHolder></Pane-30><Pane-31><Type>2</Type><DockingCX>205</DockingCX><DockingCY>250</DockingCY><Horiz>1</Horiz><Pane-1>32</Pane-1><Panes>1</Panes></Pane-31><Pane-32><Type>1</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-32><Pane-33><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>34</Pane-1><Panes>1</Panes></Pane-33><Pane-34><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-34><Pane-35><Type>4</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY></Pane-35><Pane-36><Type>1</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-36><Pane-37><Type>1</Type><DockingCX>250</DockingCX><DockingCY>251</DockingCY><Selected>38</Selected><Panes>1</Panes><Pane-1>38</Pane-1></Pane-37><Pane-38><Type>0</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Title>Output</Title><ID>1002</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>37</DockingHolder><FloatingHolder>0</FloatingHolder><LastHolder>37</LastHolder></Pane-38><Pane-39><Type>0</Type><DockingCX>427</DockingCX><DockingCY>106</DockingCY><Title>offset</Title><ID>1100</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>32</DockingHolder><FloatingHolder>59</FloatingHolder><LastHolder>32</LastHolder></Pane-39><Pane-40><Type>0</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Title>Artist Editor</Title><ID>1001</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>36</DockingHolder><FloatingHolder>0</FloatingHolder><LastHolder>36</LastHolder></Pane-40><Pane-41><Type>0</Type><DockingCX>366</DockingCX><DockingCY>271</DockingCY><Title>Kernel</Title><ID>1101</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>21</DockingHolder><FloatingHolder>44</FloatingHolder><LastHolder>44</LastHolder></Pane-41><Pane-42><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>43</TopContaner><WindowRectTopPos>26</WindowRectTopPos><WindowRectBottomPos>323</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>392</WindowRectRightPos></Pane-42><Pane-43><Type>2</Type><DockingCX>366</DockingCX><DockingCY>271</DockingCY><Horiz>1</Horiz><Pane-1>44</Pane-1><Panes>1</Panes></Pane-43><Pane-44><Type>1</Type><DockingCX>366</DockingCX><DockingCY>271</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-44><Pane-45><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>scaleKernel</Title><ID>1102</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>20</DockingHolder><FloatingHolder>48</FloatingHolder><LastHolder>48</LastHolder></Pane-45><Pane-46><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>47</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-46><Pane-47><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>48</Pane-1><Panes>1</Panes></Pane-47><Pane-48><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-48><Pane-49><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>startFireRadius</Title><ID>1103</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>19</DockingHolder><FloatingHolder>52</FloatingHolder><LastHolder>52</LastHolder></Pane-49><Pane-50><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>51</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-50><Pane-51><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>52</Pane-1><Panes>1</Panes></Pane-51><Pane-52><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-52><Pane-53><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>dx</Title><ID>1104</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>18</DockingHolder><FloatingHolder>56</FloatingHolder><LastHolder>56</LastHolder></Pane-53><Pane-54><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>55</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-54><Pane-55><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>56</Pane-1><Panes>1</Panes></Pane-55><Pane-56><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-56><Pane-57><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>58</TopContaner><WindowRectTopPos>120</WindowRectTopPos><WindowRectBottomPos>226</WindowRectBottomPos><WindowRectLeftPos>425</WindowRectLeftPos><WindowRectRightPos>790</WindowRectRightPos></Pane-57><Pane-58><Type>2</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Horiz>1</Horiz><Pane-1>59</Pane-1><Panes>1</Panes></Pane-58><Pane-59><Type>1</Type><DockingCX>250</DockingCX><DockingCY>250</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-59><Pane-60><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>fireHeight</Title><ID>1105</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>17</DockingHolder><FloatingHolder>63</FloatingHolder><LastHolder>63</LastHolder></Pane-60><Pane-61><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>62</TopContaner><WindowRectTopPos>136</WindowRectTopPos><WindowRectBottomPos>246</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-61><Pane-62><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>63</Pane-1><Panes>1</Panes></Pane-62><Pane-63><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-63><Pane-64><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>texScale</Title><ID>1106</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>16</DockingHolder><FloatingHolder>67</FloatingHolder><LastHolder>67</LastHolder></Pane-64><Pane-65><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>66</TopContaner><WindowRectTopPos>172</WindowRectTopPos><WindowRectBottomPos>282</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-65><Pane-66><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>67</Pane-1><Panes>1</Panes></Pane-66><Pane-67><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-67><Pane-68><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>textureWidth</Title><ID>1107</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>15</DockingHolder><FloatingHolder>71</FloatingHolder><LastHolder>71</LastHolder></Pane-68><Pane-69><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>70</TopContaner><WindowRectTopPos>24</WindowRectTopPos><WindowRectBottomPos>134</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-69><Pane-70><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>71</Pane-1><Panes>1</Panes></Pane-70><Pane-71><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-71><Pane-72><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>tmp</Title><ID>1108</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>14</DockingHolder><FloatingHolder>75</FloatingHolder><LastHolder>75</LastHolder></Pane-72><Pane-73><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>74</TopContaner><WindowRectTopPos>124</WindowRectTopPos><WindowRectBottomPos>234</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-73><Pane-74><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>75</Pane-1><Panes>1</Panes></Pane-74><Pane-75><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-75><Pane-76><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>xScale</Title><ID>1109</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>13</DockingHolder><FloatingHolder>79</FloatingHolder><LastHolder>79</LastHolder></Pane-76><Pane-77><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>78</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-77><Pane-78><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>79</Pane-1><Panes>1</Panes></Pane-78><Pane-79><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-79><Pane-80><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>yScale</Title><ID>1110</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>12</DockingHolder><FloatingHolder>83</FloatingHolder><LastHolder>83</LastHolder></Pane-80><Pane-81><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>82</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-81><Pane-82><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>83</Pane-1><Panes>1</Panes></Pane-82><Pane-83><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-83><Pane-84><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>xFireScale</Title><ID>1111</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>11</DockingHolder><FloatingHolder>87</FloatingHolder><LastHolder>87</LastHolder></Pane-84><Pane-85><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>86</TopContaner><WindowRectTopPos>273</WindowRectTopPos><WindowRectBottomPos>383</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-85><Pane-86><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>87</Pane-1><Panes>1</Panes></Pane-86><Pane-87><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-87><Pane-88><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>yFireScale</Title><ID>1112</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>10</DockingHolder><FloatingHolder>91</FloatingHolder><LastHolder>91</LastHolder></Pane-88><Pane-89><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>90</TopContaner><WindowRectTopPos>69</WindowRectTopPos><WindowRectBottomPos>179</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-89><Pane-90><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>91</Pane-1><Panes>1</Panes></Pane-90><Pane-91><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-91><Pane-92><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>offsetAngleScale</Title><ID>1113</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>9</DockingHolder><FloatingHolder>95</FloatingHolder><LastHolder>95</LastHolder></Pane-92><Pane-93><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>94</TopContaner><WindowRectTopPos>32</WindowRectTopPos><WindowRectBottomPos>142</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-93><Pane-94><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>95</Pane-1><Panes>1</Panes></Pane-94><Pane-95><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-95><Pane-96><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>texScale</Title><ID>1114</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>8</DockingHolder><FloatingHolder>99</FloatingHolder><LastHolder>99</LastHolder></Pane-96><Pane-97><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>98</TopContaner><WindowRectTopPos>32</WindowRectTopPos><WindowRectBottomPos>142</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-97><Pane-98><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>99</Pane-1><Panes>1</Panes></Pane-98><Pane-99><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-99><Pane-100><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>offsetVectorScale</Title><ID>1115</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>7</DockingHolder><FloatingHolder>103</FloatingHolder><LastHolder>103</LastHolder></Pane-100><Pane-101><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>102</TopContaner><WindowRectTopPos>409</WindowRectTopPos><WindowRectBottomPos>519</WindowRectBottomPos><WindowRectLeftPos>1104</WindowRectLeftPos><WindowRectRightPos>1539</WindowRectRightPos></Pane-101><Pane-102><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>103</Pane-1><Panes>1</Panes></Pane-102><Pane-103><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-103><Pane-104><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>tmpUniform</Title><ID>1116</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>34</DockingHolder><FloatingHolder>123</FloatingHolder><LastHolder>34</LastHolder></Pane-104><Pane-105><Type>0</Type><DockingCX>374</DockingCX><DockingCY>275</DockingCY><Title>GaussKernel</Title><ID>1117</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>6</DockingHolder><FloatingHolder>108</FloatingHolder><LastHolder>108</LastHolder></Pane-105><Pane-106><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>107</TopContaner><WindowRectTopPos>172</WindowRectTopPos><WindowRectBottomPos>447</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>374</WindowRectRightPos></Pane-106><Pane-107><Type>2</Type><DockingCX>374</DockingCX><DockingCY>275</DockingCY><Horiz>1</Horiz><Pane-1>108</Pane-1><Panes>1</Panes></Pane-107><Pane-108><Type>1</Type><DockingCX>374</DockingCX><DockingCY>275</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-108><Pane-109><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>yFade</Title><ID>1118</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>5</DockingHolder><FloatingHolder>112</FloatingHolder><LastHolder>112</LastHolder></Pane-109><Pane-110><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>111</TopContaner><WindowRectTopPos>44</WindowRectTopPos><WindowRectBottomPos>154</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-110><Pane-111><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>112</Pane-1><Panes>1</Panes></Pane-111><Pane-112><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-112><Pane-113><Type>0</Type><DockingCX>339</DockingCX><DockingCY>178</DockingCY><Title>modelScale</Title><ID>1119</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>4</DockingHolder><FloatingHolder>116</FloatingHolder><LastHolder>116</LastHolder></Pane-113><Pane-114><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>115</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>200</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>339</WindowRectRightPos></Pane-114><Pane-115><Type>2</Type><DockingCX>339</DockingCX><DockingCY>178</DockingCY><Horiz>1</Horiz><Pane-1>116</Pane-1><Panes>1</Panes></Pane-115><Pane-116><Type>1</Type><DockingCX>339</DockingCX><DockingCY>178</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-116><Pane-117><Type>0</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Title>lightLength</Title><ID>1120</ID><IconID>-1</IconID><Options>0</Options><DockingHolder>3</DockingHolder><FloatingHolder>120</FloatingHolder><LastHolder>120</LastHolder></Pane-117><Pane-118><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>119</TopContaner><WindowRectTopPos>22</WindowRectTopPos><WindowRectBottomPos>132</WindowRectBottomPos><WindowRectLeftPos>0</WindowRectLeftPos><WindowRectRightPos>435</WindowRectRightPos></Pane-118><Pane-119><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>120</Pane-1><Panes>1</Panes></Pane-119><Pane-120><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-120><Pane-121><Type>3</Type><DockingCX>0</DockingCX><DockingCY>0</DockingCY><TopContaner>122</TopContaner><WindowRectTopPos>140</WindowRectTopPos><WindowRectBottomPos>307</WindowRectBottomPos><WindowRectLeftPos>96</WindowRectLeftPos><WindowRectRightPos>505</WindowRectRightPos></Pane-121><Pane-122><Type>2</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Horiz>1</Horiz><Pane-1>123</Pane-1><Panes>1</Panes></Pane-122><Pane-123><Type>1</Type><DockingCX>435</DockingCX><DockingCY>110</DockingCY><Selected>0</Selected><Panes>0</Panes></Pane-123><Summary><TopContainer>2</TopContainer><Client>35</Client><Panes>123</Panes></Summary></Application_Layout></DockingPaneLayouts>
+]]></RmTextDataBlock>
+     <RmRegistryBranch NAME="RmPreviewDx9Window" API="" XML_VERSION="RenderMonkey 1.71"/>
+     <RmRegistryBranch NAME="RmPreviewGLESWindow" API="" XML_VERSION="RenderMonkey 1.71"/>
+     <RmRegistryBranch NAME="RmPreviewGLPreview" API="" XML_VERSION="RenderMonkey 1.71"/>
+     <RmRegistryBranch NAME="RmLightEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="NoteEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmRenderableTextureEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+      <RmRegistryBranch NAME="NodeRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.fireProgress" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="373" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="116" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="210" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="356" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.fireOnPaperProgress" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="467" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="114" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="210" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="356" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.finalTexture" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="258" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="114" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="210" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="356" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmRenderTargetEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmRenderStateBlockEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+      <RmRegistryBranch NAME="NodeRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="55" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="31" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1047" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="545" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmTextureObjectEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+      <RmRegistryBranch NAME="NodeRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="35" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="104" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1047" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="545" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmTessellationNodeEditorDlg" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmTextureGenerator" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EditNodeRepository" API="" XML_VERSION="RenderMonkey 1.71"/>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmPreviewGLWindow" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="EffectPlacementRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="25" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="691" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="636" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmShaderEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Disassembly" API="" XML_VERSION="RenderMonkey 1.71"/>
+       <RmStringVariable NAME="Editing Shader" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+Fragment Program]]></RmTextDataBlock></RmStringVariable>
+       <RmStringVariable NAME="Editing Pass" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+Blur]]></RmTextDataBlock></RmStringVariable>
+       <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="12" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="835" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="650" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="712" MIN="-10" MAX="10" CLAMP="FALSE"/>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmScalarEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="NodeRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.offset" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1100" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.scaleKernel" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1102" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.startFireRadius" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1103" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.fireHeight" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1105" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.textureWidth" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1107" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.xFireScale" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1111" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.yFireScale" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1112" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.offsetAngleScale" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1113" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.offsetVectorScale" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1115" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.yFade" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1118" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.lightLength" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1120" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmDynamicVariableEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="NodeRepository" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.Kernel" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1101" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmBooleanVariable NAME="ShowSetup" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="TRUE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.GaussKernel" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1117" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmBooleanVariable NAME="ShowSetup" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="TRUE"/>
+       </RmRegistryBranch>
+       <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Burning Paper.modelScale" API="" XML_VERSION="RenderMonkey 1.71">
+        <RmIntegerVariable NAME="DockPaneID" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1119" MIN="-10" MAX="10" CLAMP="FALSE"/>
+        <RmBooleanVariable NAME="ShowSetup" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="TRUE"/>
+       </RmRegistryBranch>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+     <RmRegistryBranch NAME="RmStreamEditor" API="" XML_VERSION="RenderMonkey 1.71">
+      <RmRegistryBranch NAME="Effect Workspace.Effect Group 1.Effect1.Stream Mapping" API="" XML_VERSION="RenderMonkey 1.71">
+       <RmIntegerVariable NAME="X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="673" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="114" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Width" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="641" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Height" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="228" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="ShowStatus" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Visible" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Minimized X" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+       <RmIntegerVariable NAME="Minimized Y" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="-1" MIN="-10" MAX="10" CLAMP="FALSE"/>
+      </RmRegistryBranch>
+     </RmRegistryBranch>
+    </RmRegistryBranch>
+    <RmRegistryBranch NAME="WORKSPACE" API="" XML_VERSION="RenderMonkey 1.71">
+     <RmStringVariable NAME="LAST_SAVE" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+25/1/2011 21:8:37]]></RmTextDataBlock></RmStringVariable>
+     <RmStringVariable NAME="VERSION" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+RenderMonkey Version 1.82 (build 322)]]></RmTextDataBlock></RmStringVariable>
+     <RmStringVariable NAME="XML_VERSION" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+RenderMonkey 1.71]]></RmTextDataBlock></RmStringVariable>
+     <RmStringVariable NAME="BASE_WORKSPACE_PATH" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC=""><RmTextDataBlock TYPE="TEXT"><![CDATA[
+E:\Skola\Avancerad grafikprogrammering\Projekt\AGP Project, Marcus Magnusson\]]></RmTextDataBlock></RmStringVariable>
+    </RmRegistryBranch>
+   </RmRegistryBranch>
+  </RmRegistryBranch>
+  <RmEffectGroup NAME="Effect Group 1" API="">
+   <RmOpenGLEffect NAME="Burning Paper" API="OpenGL" ACTIVE_CAMERA="Camera">
+    <RmFloatVariable NAME="offset" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.002000" MIN="0.000000" MAX="1.000000" CLAMP="TRUE"/>
+    <RmDynamicVariable NAME="Kernel" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VARIABLE_TYPE="FLOAT" ROWS="3" COLUMNS="3" FIXED_SIZE="TRUE" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE" NORMALIZE="FALSE">
+     <RmDynamicVariableValueContainer>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="0" VALUE="0.050000"/>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="1" VALUE="0.100000"/>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="2" VALUE="0.050000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="0" VALUE="0.100000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="1" VALUE="0.200000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="2" VALUE="0.100000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="0" VALUE="0.050000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="1" VALUE="0.100000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="2" VALUE="0.050000"/>
+     </RmDynamicVariableValueContainer>
+    </RmDynamicVariable>
+    <RmFloatVariable NAME="scaleKernel" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.432200" MIN="-1.000000" MAX="0.000000" CLAMP="FALSE"/>
+    <RmDynamicVariable NAME="mouseCoords" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="MouseCoordinateXYNDC" VARIABLE_TYPE="FLOAT" ROWS="2" COLUMNS="1" FIXED_SIZE="TRUE" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE" NORMALIZE="FALSE">
+     <RmDynamicVariableValueContainer>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="0" VALUE="0.821162"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="0" VALUE="0.392256"/>
+     </RmDynamicVariableValueContainer>
+    </RmDynamicVariable>
+    <RmFloatVariable NAME="leftMouseButton" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="LeftMouseButton" VALUE="0.000000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="startFireRadius" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.002000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmVectorVariable NAME="ViewPosition" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewPosition" VALUE_0="-30.662291" VALUE_1="14.919963" VALUE_2="46.321373" VALUE_3="1.000000" MIN="-10.000000" MAX="10.000000" CLAMP="FALSE" NORMALIZE="FALSE"/>
+    <RmVectorVariable NAME="ViewDirection" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewDirection" VALUE_0="0.533080" VALUE_1="-0.259391" VALUE_2="-0.805321" VALUE_3="0.000000" MIN="-10.000000" MAX="10.000000" CLAMP="FALSE" NORMALIZE="FALSE"/>
+    <RmVectorVariable NAME="UpDirection" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewUpVector" VALUE_0="-0.147593" VALUE_1="0.908738" VALUE_2="-0.390400" VALUE_3="1.000000" MIN="-10.000000" MAX="10.000000" CLAMP="FALSE" NORMALIZE="FALSE"/>
+    <RmVectorVariable NAME="SideVector" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="ViewSideVector" VALUE_0="0.833092" VALUE_1="0.326974" VALUE_2="0.446146" VALUE_3="1.000000" MIN="-10.000000" MAX="10.000000" CLAMP="FALSE" NORMALIZE="FALSE"/>
+    <RmFloatVariable NAME="fireHeight" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="20.000000" MIN="-1.000000" MAX="0.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="textureWidth" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="512.000000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="time" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="Time0_X" VALUE="38.190620" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="wobbleScale" API="" ARTIST_EDITABLE="TRUE" VARIABLE_SEMANTIC="" VALUE="0.030000" MIN="0.000000" MAX="0.100000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="burnSpeed" API="" ARTIST_EDITABLE="TRUE" VARIABLE_SEMANTIC="" VALUE="0.570000" MIN="0.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="randomnessRate" API="" ARTIST_EDITABLE="TRUE" VARIABLE_SEMANTIC="" VALUE="0.240000" MIN="0.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="yFade" API="" ARTIST_EDITABLE="TRUE" VARIABLE_SEMANTIC="" VALUE="0.700000" MIN="0.000000" MAX="2.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="xFireScale" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1.625000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="yFireScale" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.500000" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="offsetAngleScale" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.414200" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE"/>
+    <RmFloatVariable NAME="offsetVectorScale" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="1.000000" MIN="0.500000" MAX="10.000000" CLAMP="TRUE"/>
+    <RmDynamicVariable NAME="GaussKernel" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VARIABLE_TYPE="FLOAT" ROWS="3" COLUMNS="3" FIXED_SIZE="TRUE" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE" NORMALIZE="FALSE">
+     <RmDynamicVariableValueContainer>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="0" VALUE="1.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="1" VALUE="2.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="2" VALUE="1.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="0" VALUE="2.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="1" VALUE="4.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="2" VALUE="2.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="0" VALUE="1.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="1" VALUE="2.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="2" COLUMN_INDEX="2" VALUE="1.000000"/>
+     </RmDynamicVariableValueContainer>
+    </RmDynamicVariable>
+    <RmDynamicVariable NAME="modelScale" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VARIABLE_TYPE="FLOAT" ROWS="2" COLUMNS="1" FIXED_SIZE="TRUE" MIN="-1.000000" MAX="1.000000" CLAMP="FALSE" NORMALIZE="FALSE">
+     <RmDynamicVariableValueContainer>
+      <RmDynamicVariableValue ROW_INDEX="0" COLUMN_INDEX="0" VALUE="25.000000"/>
+      <RmDynamicVariableValue ROW_INDEX="1" COLUMN_INDEX="0" VALUE="35.000000"/>
+     </RmDynamicVariableValueContainer>
+    </RmDynamicVariable>
+    <RmFloatVariable NAME="lightLength" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" VALUE="0.320680" MIN="0.001000" MAX="1.000000" CLAMP="TRUE"/>
+    <Rm2DTextureVariable NAME="Terrain" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\Terrain.tga" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="distortion" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\distortion.tga" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="Fire3" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\MyFire.png" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="Flame" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\Flame.tga" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="paper_texture" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\paper_texture.jpg" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="noise" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\noise.tga" ORIGIN="0"/>
+    <Rm2DTextureVariable NAME="Distortion2" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\Distortion2.jpg" ORIGIN="0"/>
+    <Rm3DTextureVariable NAME="NoiseVolume" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Textures\NoiseVolume.dds" ORIGIN="0"/>
+    <RmRenderableTexture NAME="fireProgress" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="" ORIGIN="0" WIDTH="512" HEIGHT="512" FORMAT="21" USE_VIEWPORT_DIMENSIONS="FALSE" GENERATE_MIPMAPS="FALSE" WIDTH_RATIO="1.000000" HEIGHT_RATIO="1.000000"/>
+    <RmRenderableTexture NAME="finalTexture" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="" ORIGIN="0" WIDTH="512" HEIGHT="512" FORMAT="21" USE_VIEWPORT_DIMENSIONS="FALSE" GENERATE_MIPMAPS="FALSE" WIDTH_RATIO="1.000000" HEIGHT_RATIO="1.000000"/>
+    <RmRenderableTexture NAME="fireOnPaperProgress" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="" ORIGIN="0" WIDTH="512" HEIGHT="512" FORMAT="21" USE_VIEWPORT_DIMENSIONS="FALSE" GENERATE_MIPMAPS="FALSE" WIDTH_RATIO="1.000000" HEIGHT_RATIO="1.000000"/>
+    <RmRenderableTexture NAME="fireLight" API="" ARTIST_EDITABLE="FALSE" VARIABLE_SEMANTIC="" FILE_NAME="" ORIGIN="0" WIDTH="512" HEIGHT="512" FORMAT="21" USE_VIEWPORT_DIMENSIONS="FALSE" GENERATE_MIPMAPS="FALSE" WIDTH_RATIO="1.000000" HEIGHT_RATIO="1.000000"/>
+    <RmStreamMap NAME="Stream Mapping" API="">
+     <RmStream NAME="Stream" API="" STRIDE="32">
+      <RmStreamChannel NAME="Position_0" API="" DATA_SIZE="12" DATA_TYPE="2" REGISTER="0" USAGE="0" USAGE_INDEX="0" ATTRIBUTE_NAME="rm_Vertex"/>
+      <RmStreamChannel NAME="Normal_0" API="" DATA_SIZE="12" DATA_TYPE="2" REGISTER="0" USAGE="3" USAGE_INDEX="0" ATTRIBUTE_NAME="rm_Normal"/>
+      <RmStreamChannel NAME="TexCoord_0" API="" DATA_SIZE="8" DATA_TYPE="1" REGISTER="0" USAGE="5" USAGE_INDEX="0" ATTRIBUTE_NAME="rm_TexCoord0"/>
+     </RmStream>
+    </RmStreamMap>
+    <RmModelData NAME="ScreenAlignedQuad" API="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Models\ScreenAlignedQuad.3ds" ORIENTATION="0"/>
+    <RmModelData NAME="TesselatedPlane" API="" FILE_NAME="C:\Program Files (x86)\AMD\RenderMonkey 1.82\Examples\Media\Models\TesselatedPlane.obj" ORIENTATION="0"/>
+    <RmGLPass NAME="FireProgress" API="OpenGL" PASS_INDEX="0" ENABLED="TRUE">
+     <RmModelReference NAME="ScreenAlignedQuad" API=""/>
+     <RmGLShader NAME="Vertex Program" API="OpenGL" PIXEL_SHADER="FALSE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2 texCoord;
+
+void main(void)
+{
+   gl_Position = vec4( gl_Vertex.xy, 0.0, 1.0 );
+   gl_Position = sign( gl_Position );
+   
+   texCoord = (vec2( gl_Position.x, - gl_Position.y ) + vec2( 1.0 ) ) / vec2( 2.0 );
+   texCoord.y = 1.0 - texCoord.y;
+}]]></RmShaderCode></RmGLShader>
+     <RmGLShader NAME="Fragment Program" API="OpenGL" PIXEL_SHADER="TRUE"><RmShaderCode TYPE="TEXT"><![CDATA[
+uniform sampler2D fireProgress;
+uniform sampler2D Noise;
+uniform sampler2D Noise2;
+
+uniform float offset;
+uniform float scaleKernel;
+uniform mat3 Kernel;   // the Kernel values  tell, how much from the surrounding pixels should we add?
+
+uniform float leftMouseButton;
+uniform vec2 mouseCoords;
+uniform float startFireRadius;
+
+uniform float time;
+
+varying vec2 texCoord;
+
+void main(void)
+{
+   vec4 Color = texture2D(fireProgress, texCoord);
+   float red = Color.r;
+   float green = Color.g;
+   float blue = Color.b;
+   
+   if (red == 0.0)   // the renderTexture is initialized to be green, but we want it to be black. We fix that here.
+   {
+      green = 0.0;
+   }
+   
+   vec2 mCoords = mouseCoords;
+   mCoords.y = 1.0 - mCoords.y;
+   if (leftMouseButton == 1.0 && distance(mCoords, texCoord) <= startFireRadius)   // if leftMouseButton is pressed...
+   {
+      red += 0.01;
+   }
+   
+   else   // otherwise, sample nearby texels and change our texel according to them
+   {
+      vec2 offsets[9];
+      
+      offsets[0] = vec2(-offset, -offset);
+      offsets[1] = vec2(0.0, -offset);
+      offsets[2] = vec2(offset, -offset);
+      offsets[3] = vec2(-offset, 0.0);
+      offsets[4] = vec2(0.0, 0.0);
+      offsets[5] = vec2(offset, 0.0);
+      offsets[6] = vec2(-offset, offset);
+      offsets[7] = vec2(0.0, offset);
+      offsets[8] = vec2(offset, offset);
+      
+      
+      
+      float newRed = 0.0;
+      
+      for (int i = 0; i < 9; i++)
+      {
+         float noise = texture2D(Noise, texCoord + offsets[i]).b;
+         float tmp = texture2D(fireProgress, texCoord + offsets[i]).r * Kernel[i/3][i%3];
+         newRed += tmp * scaleKernel * noise;
+      }
+      
+      red += newRed / 0.2;
+      red = clamp(red, 0.0, 1.0);
+   }
+   
+   if (red == 1.0)
+   {
+      green += 0.02;
+      green = clamp(green, 0.0, 1.0);
+   }
+   
+   if (green == 1.0)
+   {
+      blue += 0.05;
+      blue = clamp(blue, 0.0, 1.0);
+   }
+   
+   // w is for scaling the height of the fire. we have some alternatives here - first, I used
+   // an algorithm based on time, but actually just basing it on a texture gave a satisfying
+   // result.
+   //float w = abs(cos(time * texCoord.x + time2 * texCoord.y) * texture2D(Noise, texCoord).b) / 2.0 + 0.5;
+   //float w = abs(cos(time * texCoord.x + time2 * texCoord.y) * texture2D(Noise, texCoord).b) * 1.75 + 0.20;   
+   
+   float w;
+   if (green < 0.2 || blue > 0.5)
+   {
+      w = 0.0;
+   }
+   else
+   {
+      float heightScale = texture2D(Noise2, texCoord).r;
+      heightScale = heightScale * (0.1 + heightScale) + 0.1;
+      float fireDepth = ((green - 0.2) + (blue)) / 1.3;
+      float heightRatio = -4.0 * fireDepth * fireDepth + 4.0 * fireDepth;
+      heightRatio *= heightScale;
+      w = heightRatio;
+   }
+
+   gl_FragColor = vec4(red, green, blue, w);
+}]]></RmShaderCode></RmGLShader>
+     <RmRenderTarget NAME="fireProgress" API="" INDEX="0" RENDER_TO_SCREEN="FALSE" COLOR_CLEAR="TRUE" DEPTH_CLEAR="TRUE" CLEAR_COLOR_VALUE="-16777216" DEPTH_CLEAR_VALUE="1.000000"/>
+     <RmStreamMapReference NAME="Stream Mapping" API=""/>
+     <RmTextureObject NAME="fireProgress" API="OpenGL" STATE_INDEX="0" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireProgress" API=""/>
+      <RmState NAME="GL_TextureWrapS" API="OpenGL" STATE="1" VALUE="2" USAGE="SAMPLER_STATE"/>
+      <RmState NAME="GL_TextureWrapT" API="OpenGL" STATE="2" VALUE="2" USAGE="SAMPLER_STATE"/>
+     </RmTextureObject>
+     <RmTextureObject NAME="Noise" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="Terrain" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="Noise2" API="OpenGL" STATE_INDEX="2" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="Distortion2" API=""/>
+     </RmTextureObject>
+     <RmSampler NAME="Noise" API="" REGISTER="-1"/>
+     <RmSampler NAME="Noise2" API="" REGISTER="-1"/>
+     <RmSampler NAME="fireProgress" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="offset" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="scaleKernel" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="startFireRadius" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="Kernel" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="leftMouseButton" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="mouseCoords" API="" REGISTER="-1"/>
+    </RmGLPass>
+    <RmGLPass NAME="FireLight" API="OpenGL" PASS_INDEX="1" ENABLED="FALSE">
+     <RmModelReference NAME="ScreenAlignedQuad" API=""/>
+     <RmGLShader NAME="Vertex Program" API="OpenGL" PIXEL_SHADER="FALSE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2 texCoord;
+
+void main(void)
+{
+   gl_Position = vec4( gl_Vertex.xy, 0.0, 1.0 );
+   gl_Position = sign( gl_Position );
+   
+   texCoord = (vec2( gl_Position.x, - gl_Position.y ) + vec2( 1.0 ) ) / vec2( 2.0 );
+   texCoord.y = 1.0 - texCoord.y;
+}]]></RmShaderCode></RmGLShader>
+     <RmGLShader NAME="Fragment Program" API="OpenGL" PIXEL_SHADER="TRUE"><RmShaderCode TYPE="TEXT"><![CDATA[
+uniform sampler2D fireLight;
+uniform sampler2D fireProgress;
+uniform sampler2D Noise;
+
+uniform float offset;
+uniform float scaleKernel;
+uniform mat3 Kernel;   // the Kernel values  tell, how much from the surrounding pixels should we add?
+
+uniform float leftMouseButton;
+uniform vec2 mouseCoords;
+uniform float startFireRadius;
+
+uniform float time;
+
+varying vec2 texCoord;
+
+void main(void)
+{
+   vec4 Color = texture2D(fireLight, texCoord);
+   float red = Color.r;
+   float green = Color.g;
+   float blue = Color.b;
+   
+   if (red == 0.0)   // the renderTexture is initialized to be green, but we want it to be black. We fix that here.
+   {
+      green = 0.0;
+   }
+   
+   vec2 mCoords = mouseCoords;
+   mCoords.y = 1.0 - mCoords.y;
+   if (leftMouseButton == 1.0 && distance(mCoords, texCoord) <= startFireRadius)   // if leftMouseButton is pressed...
+   {
+      red += 0.01;
+   }
+   
+   else   // otherwise, sample nearby texels and change our texel according to them
+   {
+      vec2 offsets[9];
+      
+      offsets[0] = vec2(-offset, -offset);
+      offsets[1] = vec2(0.0, -offset);
+      offsets[2] = vec2(offset, -offset);
+      offsets[3] = vec2(-offset, 0.0);
+      offsets[4] = vec2(0.0, 0.0);
+      offsets[5] = vec2(offset, 0.0);
+      offsets[6] = vec2(-offset, offset);
+      offsets[7] = vec2(0.0, offset);
+      offsets[8] = vec2(offset, offset);
+      
+      
+      
+      float newRed = 0.0;
+      
+      for (int i = 0; i < 9; i++)
+      {
+         float noise = texture2D(Noise, texCoord + offsets[i]).b;
+         float tmp = texture2D(fireLight, texCoord + offsets[i]).r * Kernel[i/3][i%3];
+         newRed += tmp * scaleKernel * noise * (1.5 + texture2D(fireProgress, texCoord + offsets[i]).w);
+      }
+      
+      red += newRed / 0.2;
+      red = clamp(red, 0.0, 1.0);
+   }
+   
+   if (red == 1.0)
+   {
+      green += 0.02;
+      green = clamp(green, 0.0, 1.0);
+   }
+   
+   if (green == 1.0)
+   {
+      blue += 0.05;
+      blue = clamp(blue, 0.0, 1.0);
+   }
+
+   gl_FragColor = vec4(red, green, blue, 1.0);
+}]]></RmShaderCode></RmGLShader>
+     <RmRenderTarget NAME="fireLight" API="" INDEX="0" RENDER_TO_SCREEN="FALSE" COLOR_CLEAR="TRUE" DEPTH_CLEAR="TRUE" CLEAR_COLOR_VALUE="-16777216" DEPTH_CLEAR_VALUE="1.000000"/>
+     <RmStreamMapReference NAME="Stream Mapping" API=""/>
+     <RmTextureObject NAME="Noise" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="Terrain" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="fireLight" API="OpenGL" STATE_INDEX="0" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireLight" API=""/>
+      <RmState NAME="GL_TextureWrapT" API="OpenGL" STATE="2" VALUE="2" USAGE="SAMPLER_STATE"/>
+      <RmState NAME="GL_TextureWrapS" API="OpenGL" STATE="1" VALUE="2" USAGE="SAMPLER_STATE"/>
+     </RmTextureObject>
+     <RmTextureObject NAME="fireProgress" API="OpenGL" STATE_INDEX="2" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireProgress" API=""/>
+     </RmTextureObject>
+     <RmSampler NAME="Noise" API="" REGISTER="-1"/>
+     <RmSampler NAME="fireLight" API="" REGISTER="-1"/>
+     <RmSampler NAME="fireProgress" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="offset" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="scaleKernel" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="startFireRadius" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="Kernel" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="leftMouseButton" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="mouseCoords" API="" REGISTER="-1"/>
+    </RmGLPass>
+    <RmGLPass NAME="Blur" API="OpenGL" PASS_INDEX="4" ENABLED="FALSE">
+     <RmModelReference NAME="ScreenAlignedQuad" API=""/>
+     <RmGLShader NAME="Fragment Program" API="OpenGL" PIXEL_SHADER="TRUE"><RmShaderCode TYPE="TEXT"><![CDATA[
+uniform sampler2D finalTexture;
+uniform float offset;
+uniform mat3 GaussKernel;
+
+varying vec2 texCoord;
+
+void main( void )
+{
+   vec4 finalColor = texture2D(finalTexture, texCoord);
+   
+      vec2 offsets[9];
+      
+      offsets[0] = vec2(-offset, -offset);
+      offsets[1] = vec2(0.0, -offset);
+      offsets[2] = vec2(offset, -offset);
+      offsets[3] = vec2(-offset, 0.0);
+      offsets[4] = vec2(0.0, 0.0);
+      offsets[5] = vec2(offset, 0.0);
+      offsets[6] = vec2(-offset, offset);
+      offsets[7] = vec2(0.0, offset);
+      offsets[8] = vec2(offset, offset);
+      
+      vec4 sum = vec4(0.0);
+      for (int i = 0; i < 9; i++)
+      {
+         vec4 tmp = texture2D(finalTexture, texCoord + offsets[i]) * GaussKernel[i/3][i%3];
+         sum += tmp;
+      }
+      
+      finalColor = sum / 16.0;
+   
+   gl_FragColor = finalColor;
+}]]></RmShaderCode></RmGLShader>
+     <RmGLShader NAME="Vertex Program" API="OpenGL" PIXEL_SHADER="FALSE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2  texCoord;
+
+void main(void)
+{
+   gl_Position = vec4( gl_Vertex.xy, 0.0, 1.0 );
+   gl_Position = sign( gl_Position );
+    
+   texCoord = (vec2( gl_Position.x, - gl_Position.y ) + vec2( 1.0 ) ) / vec2( 2.0 );
+   texCoord.y = 1.0 - texCoord.y;
+      
+}]]></RmShaderCode></RmGLShader>
+     <RmStreamMapReference NAME="Stream Mapping" API=""/>
+     <RmTextureObject NAME="finalTexture" API="OpenGL" STATE_INDEX="0" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="finalTexture" API=""/>
+     </RmTextureObject>
+     <RmSampler NAME="finalTexture" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="offset" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="GaussKernel" API="" REGISTER="-1"/>
+    </RmGLPass>
+    <RmGLPass NAME="FireOnPaperProgress" API="OpenGL" PASS_INDEX="2" ENABLED="TRUE">
+     <RmModelReference NAME="TesselatedPlane" API=""/>
+     <RmGLShader NAME="Fragment Program" API="OpenGL" PIXEL_SHADER="TRUE"><RmShaderCode TYPE="TEXT"><![CDATA[
+uniform sampler2D Texture0;
+uniform sampler2D Flame;
+uniform sampler2D PaperTexture;
+uniform sampler2D FireLight;
+
+varying vec2 texCoord;
+
+void main(void)
+{
+   vec4 firstColor = texture2D(PaperTexture, texCoord);
+   gl_FragColor = firstColor;
+   vec4 Color = texture2D(Texture0, texCoord);
+   float red = Color.r;
+   float green = Color.g;
+   float blue = Color.b;
+   
+   if (green < 0.2)   // no fire, just transforming the paper
+   {
+      float tmp = 1.0 - ((red + green) / 1.2);
+      vec4 newColor = vec4(tmp, tmp, tmp, 1.0);
+      gl_FragColor = mix(newColor, firstColor, tmp);
+      /* this could be used in some way if we were to use the FireLight pass
+      vec4 lightColor = texture2D(FireLight, texCoord);
+      if (lightColor.r != 0.0)
+      {  
+         gl_FragColor = mix(gl_FragColor, lightColor, 0.5);
+      }*/
+   }
+   
+   
+   else if (blue < 0.5)   // burning
+   {
+      gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+   }
+   
+   else if (blue != 1.0)   // glowing ashes
+   {
+      // here, we make a poor attempt at coloring the glowing ashes, which are mostly white
+      // close to the fire, then gradually goes towards red. It's sort of okay, but it doesn't
+      // have the real glow feel to it.      
+      float index = blue;
+      index = 4 * index - 4 * index * index * index;
+      index = clamp(index, 0.01, 0.9);
+      vec4 glowColor = texture2D(Flame, vec2(index, 0.0));
+      gl_FragColor = glowColor;
+   }
+   
+   else
+   {
+      discard;
+   }
+}]]></RmShaderCode></RmGLShader>
+     <RmGLShader NAME="Vertex Program" API="OpenGL" PIXEL_SHADER="FALSE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2 texCoord;
+
+uniform vec2 modelScale;
+
+void main(void)
+{
+   vec4 vertex = gl_Vertex;
+   vertex = vertex * vec4(modelScale.x * 2.0, 1.0, modelScale.y * 2.0, 1.0);   // scale
+   gl_Position = gl_ModelViewProjectionMatrix * vertex;
+   texCoord = gl_MultiTexCoord0.xy;
+   texCoord.x = 1.0 - texCoord.x;
+}]]></RmShaderCode></RmGLShader>
+     <RmRenderTarget NAME="fireOnPaperProgress" API="" INDEX="0" RENDER_TO_SCREEN="FALSE" COLOR_CLEAR="TRUE" DEPTH_CLEAR="TRUE" CLEAR_COLOR_VALUE="-16777216" DEPTH_CLEAR_VALUE="1.000000"/>
+     <RmStreamMapReference NAME="Stream Mapping" API=""/>
+     <RmTextureObject NAME="Texture0" API="OpenGL" STATE_INDEX="0" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireProgress" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="Flame" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="Flame" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="PaperTexture" API="OpenGL" STATE_INDEX="2" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="paper_texture" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="FireLight" API="OpenGL" STATE_INDEX="3" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireLight" API=""/>
+     </RmTextureObject>
+     <RmSampler NAME="Flame" API="" REGISTER="-1"/>
+     <RmSampler NAME="PaperTexture" API="" REGISTER="-1"/>
+     <RmSampler NAME="Texture0" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="modelScale" API="" REGISTER="-1"/>
+    </RmGLPass>
+    <RmGLPass NAME="RenderFire" API="OpenGL" PASS_INDEX="3" ENABLED="TRUE">
+     <RmModelReference NAME="ScreenAlignedQuad" API=""/>
+     <RmGLShader NAME="Fragment Program" API="OpenGL" PIXEL_SHADER="TRUE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2 texCoord;
+
+uniform sampler2D fireProgress;
+uniform sampler2D fireOnPaperProgress;
+
+uniform vec4 ViewPosition;
+uniform vec4 ViewDirection;
+uniform vec4 UpDirection;
+uniform vec4 SideVector;
+
+uniform vec2 modelScale;
+uniform float textureWidth;
+uniform float offsetAngleScale;
+uniform float offsetVectorScale;
+
+uniform float time;
+uniform float fireHeight;
+uniform float wobbleScale;
+uniform float burnSpeed;
+uniform float randomnessRate;
+uniform float yFade;
+uniform float xFireScale;
+uniform float yFireScale;
+
+uniform sampler3D Noise;
+uniform sampler2D Flame;
+
+// this function checks if the given position is within the bounds of the "fire box", i.e. the
+// box where fire could possibly be present
+bool withinBounds(vec3 pos)
+{
+   if ( (pos.x >= -modelScale.x) && (pos.x <= modelScale.x) && (pos.z >= -modelScale.y) && (pos.z <= modelScale.y) && (pos.y >= 0.0) && (pos.y <= fireHeight) )
+      return true;
+   else 
+      return false;
+}
+
+void main(void)
+{
+   // first, set the color to the original color. This might get overwritten later.
+   vec4 StartColor = texture2D(fireOnPaperProgress, texCoord);
+
+   // next, we want the "offset vector" that will point from the ViewPosition
+   // towards the direction of the current fragment. A little vector magic at this point.
+   float x = (texCoord.x * 2.0) - 1.0;
+   float y = (texCoord.y * 2.0) - 1.0;
+   vec3 offsetVector = normalize((ViewDirection.xyz + offsetAngleScale * x * SideVector.xyz + offsetAngleScale * y * UpDirection.xyz).xyz);
+   
+   vec3 startPosition = ViewPosition.xyz;
+   
+   // what we want to do here is position the "start position" at the far back.
+   // This means that we will start at the first point along the line from the
+   // ViewPosition, where we are outside of the paper - be it below the paper, or
+   // outside the edges.
+   float numY = -1.0 * (startPosition.y / offsetVector.y);   // how many offsetVectors do we need to add to get to y = 0.0?
+   float numX = (sign(offsetVector.x) * modelScale.x - startPosition.x) / offsetVector.x;  // how many do we need to add to get to the x-edge?
+   float numZ = (sign(offsetVector.z) * modelScale.y - startPosition.z) / offsetVector.z;
+   float tmp = 0.0;
+   
+   if (numY <= 0.0)   // this simply means that the offsetVector is not going downwards
+   {
+      tmp = min(numX, numZ);
+   }
+   else
+   {
+      tmp = min(numY, numX);
+      tmp = min(tmp, numZ);
+   }
+   
+   // here, we set the start position at the edge of the paper, be it at
+   // the bottom or at some far edge, whatever is closest. We add 0.1 to
+   // tmp just to avoid small float imprecision.
+   startPosition += (tmp + 0.1) * offsetVector;
+   
+   vec3 currentPosition = startPosition;
+   
+   bool isInside = withinBounds(currentPosition);
+   
+   // here, we scale the offsetVector in such a way that its length in the
+   // xz-plane, is equal to the distance between two texels in the texture
+   float stepSize = (length(modelScale) * 2) / textureWidth;   // this is probably not quite right
+   vec2 xzVector = normalize(offsetVector.xz) * stepSize;
+   float scale = offsetVector.x / xzVector.x;
+   offsetVector = offsetVector / scale;
+   
+   vec4 fireColor = vec4(0.0);   // to this, we'll add all the fire colors along the line
+   bool didBurn = false;
+   float numBurnPoints = 0.0;    // the number of points along the line where we found fire
+   
+   for (int i = 0; i < int(textureWidth); i++)
+   {
+      currentPosition = startPosition - (i * offsetVectorScale * offsetVector);
+         
+      //are we behind the view position?
+      if (sign(currentPosition.x - ViewPosition.x) != sign(offsetVector))
+         break;
+      
+      // are we inside the fire box?   
+      if (withinBounds(currentPosition))
+      {
+         isInside = true;
+      }
+      else
+      {
+         if (isInside)   // we went from inside the paper to outside. Might as well break!
+            break;
+         else
+            continue;   // not time to break yet, but we want to skip to the next iteration
+      }
+            
+      // else, read the fireProgress texture below this position!
+      vec2 fireTexCoord = (currentPosition).xz;
+
+      // bring the scale from [-texScale, texScale] to [0.0, 1.0]
+      fireTexCoord = (fireTexCoord + modelScale) / (2.0 * modelScale);
+      fireTexCoord.y = 1.0 - fireTexCoord.y;
+      vec4 fireProgressColor = texture2D(fireProgress, fireTexCoord);   // texture written in FireProgress pass
+      
+      if (fireProgressColor.b > 0.5)   // fire has gone out!
+         continue;
+      if (fireProgressColor.g < 0.2)   // fire hasn't started!
+         continue;
+         
+      float heightScale = fireProgressColor.w;
+      float fireHeightAtThisPoint = fireHeight * heightScale;   // the maximum height of the fire at this point
+      if (currentPosition.y > fireHeightAtThisPoint)
+         continue;
+         
+      // OTHERWISE, FIRE!!
+     
+      // Here, we use a modified version of the Inferno-effect of the RenderMonkey Fire example.
+      // the fireCoord attributes are set to a value between -1.0 and 1.0.
+  
+      // The shifting of the y-coordinate makes sure that the top of the fire always look right,
+      // even when it's rising.
+      // The x-coordinate is a mix between the x- and z-coordinates of the current position.
+      // At first, they were modified to follow a /\/\/\ pattern, varying between -1.0 and 1.0. The point of
+      // this was to be able to use the "same" fire pattern over and over again, and making it flow
+      // smoothly all the way.
+      // This would have been great if the scale of the fire was bigger (say, if it was a forest fire).
+      // However, since the scale is rather small (just a paper), and especially after I was able to
+      // speed up the effect, it was enough to have a very simple solution, as here. The other solution is
+      // kept, because it took quite some time to derive the formula...
+      vec2 fireCoord;
+      //fireCoord.x = ((1.0 - (abs(currentPosition.x - 1.0 - 4.0 * floor((currentPosition.x + 1.0) / 4.0)))) + (1.0 - abs(currentPosition.z - 1.0 - 4.0 * floor((currentPosition.z + 1.0) / 4.0)))) / 2.0;
+      fireCoord.x = (currentPosition.x + currentPosition.z) / (2.0 * modelScale.x);
+      fireCoord.y = (currentPosition.y - (fireHeightAtThisPoint / 2.0)) / (fireHeightAtThisPoint / 2.0);
+      
+      // calculate fire color!
+      float wobbX = 2.0 * cos(6.0 *  fireCoord.x + time);
+      float wobbY = 7.0 * (1.0 - fireCoord.y) * (1.0 - fireCoord.y);
+      float wobble = sin(time + wobbX + wobbY);
+      
+      vec3 coord;
+      // Wobble more in the flames than at the base
+      coord.x = xFireScale * fireCoord.x + wobbleScale * (fireCoord.y + 1.0) * wobble;
+      // Create an upwards movement
+      coord.y = yFireScale * fireCoord.y - burnSpeed * time;
+      // Move in Z to get some randomness
+      coord.z = randomnessRate * time;
+      float noisy = texture3D(Noise, coord).x;
+      
+      // Get the color out of it all
+      float heat = noisy - yFade * fireCoord.y;
+      heat = clamp(heat, 0.0, 1.0);   // this gives us a sort of "inner flame" at the base, very nice!
+      if (heat < 0.007)   // if we don't do this, we'll have some annoying "fog" above the fire
+         continue;
+      
+      vec4 flame = texture2D(Flame, vec2(heat,0.0));
+                  
+      didBurn = true;
+      numBurnPoints += 1.0;
+      fireColor += flame;
+   }
+      
+   if (didBurn)
+   {
+      fireColor = fireColor / numBurnPoints;
+      fireColor.w = 1.0;
+      gl_FragColor = mix(fireColor, StartColor, 0.1);
+   }
+   else
+   {
+      gl_FragColor = StartColor;
+   }
+}]]></RmShaderCode></RmGLShader>
+     <RmGLShader NAME="Vertex Program" API="OpenGL" PIXEL_SHADER="FALSE"><RmShaderCode TYPE="TEXT"><![CDATA[
+varying vec2 texCoord;
+
+void main(void)
+{
+   gl_Position = vec4( gl_Vertex.xy, 0.0, 1.0 );
+   gl_Position = sign( gl_Position );
+    
+   texCoord = (vec2( gl_Position.x, - gl_Position.y ) + vec2( 1.0 ) ) / vec2( 2.0 );
+   texCoord.y = 1.0 - texCoord.y;
+}]]></RmShaderCode></RmGLShader>
+     <RmStreamMapReference NAME="Stream Mapping" API=""/>
+     <RmTextureObject NAME="fireOnPaperProgress" API="OpenGL" STATE_INDEX="1" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireOnPaperProgress" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="Noise" API="OpenGL" STATE_INDEX="2" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="NoiseVolume" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="fireProgress" API="OpenGL" STATE_INDEX="0" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="fireProgress" API=""/>
+     </RmTextureObject>
+     <RmTextureObject NAME="Flame" API="OpenGL" STATE_INDEX="3" VERTEX_TEXTURE="FALSE">
+      <RmTextureReference NAME="Fire3" API=""/>
+     </RmTextureObject>
+     <RmSampler NAME="Flame" API="" REGISTER="-1"/>
+     <RmSampler NAME="Noise" API="" REGISTER="-1"/>
+     <RmSampler NAME="fireOnPaperProgress" API="" REGISTER="-1"/>
+     <RmSampler NAME="fireProgress" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="burnSpeed" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="fireHeight" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="modelScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="offsetAngleScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="offsetVectorScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="randomnessRate" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="textureWidth" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="time" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="wobbleScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="xFireScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="yFade" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="yFireScale" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="SideVector" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="UpDirection" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="ViewDirection" API="" REGISTER="-1"/>
+     <RmShaderConstant NAME="ViewPosition" API="" REGISTER="-1"/>
+    </RmGLPass>
+   </RmOpenGLEffect>
+  </RmEffectGroup>
+ </RmEffectWorkspace>
+</RENDER_MONKEY>
