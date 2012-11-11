@@ -1,4 +1,4 @@
-# fire-render
+# fire-renderer
 
 A project for a shader programming course using GLSL. Renders a burning piece of paper. Apparantly re-discovered the volume ray casting rendering technique, without having studied any data visualization - lots of fun!
 
